@@ -16,7 +16,8 @@ SEC_PER_MIN: int = 60
 
 
 def main():
-    print("Therer are " + str(DAYS_PER_YEAR * HOURS_PER_DAY * MIN_PER_HOUR * SEC_PER_MIN) + " seconds in a year!")
+    print("There are " + str(DAYS_PER_YEAR * HOURS_PER_DAY * MIN_PER_HOUR * SEC_PER_MIN) + " seconds in a year!")
 
 
 main()
+
