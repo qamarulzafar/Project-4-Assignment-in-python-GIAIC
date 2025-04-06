@@ -1,30 +1,27 @@
-import random 
+print("Think of a number between 1 and 100, and I will try to guess it!")
+input("Press Enter when you're ready...")
 
-def guess_the_number():
-    print("Welcome to the Guess the Number Game!")
-    print("I have chosen a number between 1 and 100. Can you guess it?")
+low = 1
+high = 100
+attempts = 0
 
-    number_to_guess = random.randint(1, 100)
-    attempts = 0 
+while True:
+    if low > high:
+        print("Hmm... Are you sure you're giving the right hints?")
+        break
 
+    guess = (low + high) // 2
+    attempts += 1
+    print(f"Is it {guess}?")
 
-    while True :
+    feedback = input("Type 'h' if my guess is too high, 'l' if it's too low, or 'c' if it's correct: ").lower()
 
-        try:
-            guess = int(input("Enter your guess: "))
-            attempts += 1
-
-            if guess < number_to_guess:
-                print("Too low. Try again.")
-            elif guess > number_to_guess:
-                print("Too high! Try again.")
-            else:
-                print(f"Congratulations! You've guessed the number {number_to_guess} correctly in {attempts} attempts.")
-                break
-
-        except ValueError:
-            print("Please enter a valid number.")
-
-        
-
-guess_the_number()
+    if feedback == 'h':
+        high = guess - 1
+    elif feedback == 'l':
+        low = guess + 1
+    elif feedback == 'c':
+        print(f"Yay! I guessed your number in {attempts} attempts!")
+        break
+    else:
+        print("Please enter only 'h', 'l', or 'c'.")
