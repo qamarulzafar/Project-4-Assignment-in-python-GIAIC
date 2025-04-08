@@ -1,5 +1,9 @@
 import streamlit as st
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 st.title("☁️ Weather App")
 
@@ -9,7 +13,9 @@ city = st.text_input("Enter city name:")
 # API call
 if st.button("Get Weather"):
     if city:
-        api_key = "20670664baa92e4d248fa544f2ef190e" 
+        api_key = os.getenv("OPENWEATHERMAP_API_KEY")
+        if not api_key:
+            st.error("Please set the OPENWEATHERMAP_API_KEY environment variable.")
         url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
         response = requests.get(url)
         
